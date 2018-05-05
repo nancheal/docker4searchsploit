@@ -4,8 +4,8 @@ export TOP_PID=$$
 trap 'exit 1' TERM
 exit_script(){
         echo "USAGE:"
-        echo "      docker run -it --rm nancheal/docker4searchsploit -E searchsploit"
-        echo "      docker run -it --rm nancheal/docker4searchsploit -E cat xxx"
+        echo "      docker run -it --rm nancheal/docker4searchsploit -E \"searchsploit\""
+        echo "      docker run -it --rm nancheal/docker4searchsploit -E \"cat xxx\""
         kill -s TERM $TOP_PID
 }
 if [ $# -gt 0 ];then 
@@ -19,7 +19,7 @@ if [ $# -gt 0 ];then
                             ;;
             esac
     done
-    /bin/bash $COMMAND
+    $COMMAND
 else
     :|exit_script
 fi
